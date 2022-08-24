@@ -2,9 +2,10 @@
 <!Doctype HTML>
 <!-- this is a comment! -->
 <html>
+<body>
 
-<head> hello! </head>
-<body> 
+<h1> This should be a heading? </h1>
 <p> This should be a paragraph! </p>
+
 </body>
 </html>
