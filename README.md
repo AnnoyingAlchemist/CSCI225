@@ -1,7 +1,8 @@
 # CSCI225
-<!Doctype HTML>
+<!DOCTYPE HTML>
 <!-- this is a comment! -->
 <html>
+<head>CSCI125 Website for Brandon Payero!</head>
 <body>
 
 <h1> This should be a heading? </h1>
