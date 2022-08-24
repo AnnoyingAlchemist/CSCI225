@@ -1,3 +1,10 @@
 # CSCI225
-dummy personal website
-currently testing
+<!Doctype HTML>
+<!-- this is a comment! -->
+<html>
+
+<head> hello! </head>
+<body> 
+<p> This should be a paragraph! </p>
+</body>
+</html>
