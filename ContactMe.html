@@ -8,14 +8,15 @@
 <head>
     <title>Contact Me</title>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/7ocZH1B3WX8" title="YouTube video player"
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-</head>
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe> 
+
 <p>
 <fieldset>
     <legend>Feedback</legend>
-    First Name: <input type="text" placeholder="anonymous" name="fname" required>
-    Last Name: <input type="text" placeholder="anonymous" name="lname" required>
+    <form>
+    First Name: <input type="text" placeholder="anonymous" name="fname" autocomplete="on" required>
+    Last Name: <input type="text" placeholder="anonymous" name="lname" autocomplete="on" required>
     email: <input type="email" placeholder="name@domain.com" name="mail">
     <br>
 
@@ -33,6 +34,19 @@
             <option value="Instagram"> Instagram</option>
         </select>
     </p>
+    
+    <p>
+        What is your favorite Root faction?
+        <input list="factions" name="favfactions">
+        <datalist id="factions">
+          <option value="Marquise de cat">
+          <option value="Woodland Alliance">
+          <option value="Vagabond">
+          <option value="Eyrie Dynasties">
+          <option value="None/Don't Play Root">
+        </datalist>
+    </p>
+
     <p>
         How would you rate this site out of 10? <input type="range" name="rating" min="1" max="10">
     </p>
@@ -43,11 +57,12 @@
     <p>
 
     <p>
-        <input type="submit" value="Submit">
+        <input type="submit">
     </p>
+</form>
 
-    </p>
+
 </fieldset>
-</p>
+
 
 </html>
