@@ -1,0 +1,87 @@
+/* ------- Color ------- */
+
+div.introduction{
+    background-color: hsla(0, 100%, 80%, 0.9);
+}
+
+/* ------- Layout ------- */
+
+/* ------- Fixed ------- */
+footer{
+    background-color: hsla(500, 100%, 80%, 0.9);
+    position: fixed;
+    width: 12%;
+    left: 45%;
+    bottom: 0px;
+    padding: 0.25%;
+}
+
+
+div.navbar{
+    background-color: hsla(600, 100%, 80%, 0.9);
+    position: fixed;
+    width: 17%;
+    height: 5%;
+    left: 45%;
+    top: 0px;
+    padding: 0.25%;
+}
+
+div.TopButton{
+    background-color: hsla(50, 100%, 50%, 0.9);
+    position: fixed;
+    width: 2%;
+    height: 2%;
+    right: 0px;
+    bottom: 0px;
+    padding: 0.25%;
+}
+
+
+/* ------- Not Fixed ------- */
+
+div.introduction{
+    width: 60%;
+    float: left;
+    padding: 1%;
+
+}
+
+div.portfolio{ 
+    background-color: hsla(400, 100%, 80%, 0.9);
+    padding: 1%;
+    float: left;
+}
+
+div.image{
+    background-color: hsla(10, 100%, 80%, 0.9);
+    float: left;
+    padding: 1%;
+    float: right;
+}
+
+div.ContactInfo{
+    background-color: hsla(600, 100%, 80%, 0.9);
+    padding: 1%;
+    float: left;
+    width: 60%;
+}
+
+div.Schedule{
+    background-color: hsla(100, 100%, 80%, 0.9);
+    padding: 1%;
+    float: left;
+    width: 60%;
+}
+
+
+/* ------- Absolute ------- */
+div.assignments{
+    background-color: hsla(200, 100%, 80%, 0.9);
+    position: absolute;
+    width: 15%;
+    height: 80%;
+    right: 431px;
+    top: 213px;
+
+}
