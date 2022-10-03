@@ -53,6 +53,7 @@ p{
 p::first-letter{
     font-size: 30px;
 }
+
 /* Decoration */
 a{
     text-decoration: none;
@@ -63,8 +64,7 @@ a:hover{
 }
 
 body{
-    /*CURRENTLY BROKEN, PLEASE FIX FUTURE ME!!!!!!!!*/
-    background-image:url(/img/Galaxy.jpg);
+    background-image:url(../img/Galaxy.jpg);
 }
 
 div.portfolio, div.ContactInfo, div.Schedule{
@@ -83,7 +83,7 @@ h1{
 }
 
 div.portfolio p:nth-child(2){
-    box-shadow: 5px;
+    box-shadow: 15px 15px 50px dimgrey;
 }
 /* ------- Layout ------- */
 
