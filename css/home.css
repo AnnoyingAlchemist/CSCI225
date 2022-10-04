@@ -28,8 +28,10 @@ div.Schedule{
 }
 
 div.assignments{
-    background-color: hsla(200, 100%, 80%, 0.9);
+    background-image: linear-gradient(rebeccapurple, blue);
 }
+
+
 
 /** Font/text **/
 p{
@@ -53,6 +55,8 @@ p{
 p::first-letter{
     font-size: 30px;
 }
+
+
 
 /* Decoration */
 a{
@@ -80,12 +84,38 @@ div.navbar li{
 h1{
     border-top: 5px solid #0ff;
     border-top-right-radius: 30px;
+    transition: background-color 2s;
+}
+
+h1:hover{
+    transform: rotate(-5deg);
+    
+    background-color: rebeccapurple;
+}
+
+div.Schedule tr:nth-child(2n){
+    background-color: lightblue;
+}
+div.Schedule td{
+    padding: 0.5%;
+    vertical-align: top;
+}
+div.Schedule table tr td{
+    border: 1px solid #0fff;
+    empty-cells: show;
 }
 
 div.portfolio p:nth-child(2){
     box-shadow: 15px 15px 50px dimgrey;
 }
+
+div.introduction:active{
+    display: none;
+} 
+
 /* ------- Layout ------- */
+
+
 
 /* ------- Fixed ------- */
 div.introduction h1{
@@ -126,6 +156,9 @@ footer{
 footer p{
     margin: 0%;
 }
+footer:active{
+    visibility: hidden;
+}
 
 
 div.navbar{
@@ -161,6 +194,7 @@ div.TopButton{
 }
 
 
+
 /* ------- Non-Fixed Postion ------- */
 
 
@@ -183,6 +217,7 @@ div.Schedule{
     float: left;
     width: 60%;
 }
+
 
 
 /* ------- Absolute ------- */
