@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href=" css/bmi.css ">
+</head>
+
+<body>
+    <div class="BMI_form">
+        <p>
+        <fieldset>
+            <legend>
+                <h1>English BMI Calculator</h1>
+            </legend>
+            Weight <br>
+            <input type="number" placeholder="Enter your weight" name="weight" id="weight" required>lbs. <br>
+
+            Height <br>
+            <input type="number" placeholder="Enter your height" name="height" id="height" required>inches <br>
+
+            Name <br>
+            <input type="text" placeholder="Enter your name" name="name" id="name" required> <br>
+            <p id="welcome_msg"></p>
+
+            Age is: <select name="age" id="age">
+                <option value="u20">Under 20</option>
+                <option value="o20">20 or older</option>
+            </select>
+            <p id="reminder"></p>
+            <br>
+
+            <button id="BMI_Button">Calculate BMI</button>
+            <p id="BMI_result"></p>
+    </div>
+
+    <div class="mii"> 
+        <p><img src="img/mii.png" alt="Just imagine a mii is here"></p>
+    </div>
+
+    </fieldset>
+
+    <script>
+        function validateInput() {
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value);
+            var name = document.getElementById('name').value;
+            var age_index = document.getElementById('age').selectedIndex;
+
+            console.log("Weight: " + weight);
+            console.log("Height: " + height);
+            console.log("Name: " + name);
+            console.log("Age Group index: " + age_index);
+
+            if (weight <= 0) {
+                alert("Please enter a positive number");
+                var weight = 1;
+                document.getElementById("weight").value = 1;
+            }
+
+            if (height <= 0) {
+                alert("Please enter a positive number");
+                var height = 1;
+                document.getElementById("height").value = 1;
+            }
+
+        }
+
+        function checkAge() {
+            var age_index = document.getElementById('age').selectedIndex;
+            if (age_index === 0) {
+                document.getElementById("reminder").textContent = "Use the BMI percentile chart located here: https://www.cdc.gov/growthcharts/data/set1clinical/cj41l023.pdf";
+            } else {
+                document.getElementById("reminder").textContent = "";
+            }
+        }
+
+        function welcome() {
+            var name = document.getElementById('name').value;
+            document.getElementById("welcome_msg").textContent = "Hi, " + name.toString() + "! Welcome to my BMI calculator!";
+        }
+
+        function calcBMI() {
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value);
+            //Values checked again here just for extra safety...
+            if (weight <= 0 || weight !== weight) {
+                var weight = 1;
+                document.getElementById("weight").value = 1;
+            }
+            if (height <= 0 || height !== height) {
+                var height = 1;
+                document.getElementById("height").value = 1;
+            }
+            console.log("passed Weight: " + weight);
+            console.log("passsed Height: " + height);
+
+            var BMI = parseFloat((weight * 703) / (height ^ 2));
+            console.log("BMI true value: " + BMI);
+
+
+            if (BMI >= 28) {
+                document.getElementById("BMI_result").textContent = "Your BMI is: " + BMI.toFixed(2) + ". This BMI means you are overweight.";
+                window.open('http://www.nhlbi.nih.gov/health/public/heart/obesity/lose_wt/control.htm');
+            } else {
+                document.getElementById("BMI_result").textContent = "Your BMI is: " + BMI.toFixed(2);
+            }
+
+        }
+
+        document.getElementById('weight').addEventListener('blur', validateInput, false);
+        document.getElementById('height').addEventListener('blur', validateInput, false);
+        document.getElementById('name').addEventListener('blur', validateInput, false);
+        document.getElementById('age').addEventListener('blur', validateInput, false);
+
+        document.getElementById('name').addEventListener('blur', welcome, false);
+        document.getElementById('age').addEventListener('click', checkAge, false);
+
+        document.getElementById('BMI_Button').addEventListener('click', calcBMI, false)
+
+
+    </script>
+
+    </p>
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
