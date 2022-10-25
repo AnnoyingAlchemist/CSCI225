@@ -35,10 +35,21 @@
             <p id="BMI_result"></p>
     </div>
 
-    <div class="mii"> 
-        <p><img src="img/mii.png" alt="Just imagine a mii is here"></p>
+    <div class="mii">
+        <p><img src="img/mii.png" width="400" alt="Just imagine a mii is here" id="mii"></p>
     </div>
 
+    <div class="BMIscale">
+        <p>
+            <img src="img/BMI bar.png" width="1000" alt="Just imagine a bar is here" id="scale">
+        </p>
+    </div>
+
+    <div class="bar">
+        <p>
+            <img src="img/bar.png" height="150" alt="Just imagine a bar is here" id="yellow_bar">
+        </p>
+    </div>
     </fieldset>
 
     <script>
@@ -98,17 +109,34 @@
 
             var BMI = parseFloat((weight * 703) / (height ^ 2));
             console.log("BMI true value: " + BMI);
-
+            //For animations
+            var moveAmount = (BMI - 18) * 100;
 
             if (BMI >= 28) {
                 document.getElementById("BMI_result").textContent = "Your BMI is: " + BMI.toFixed(2) + ". This BMI means you are overweight.";
                 window.open('http://www.nhlbi.nih.gov/health/public/heart/obesity/lose_wt/control.htm');
-            } else {
+                //Animation
+                document.getElementById("yellow_bar").animate([{ transform: 'translate(0,0)' }, { transform: 'translate(950px,0)' }], { duration: 2000, fill: "forwards" });
+                document.getElementById("mii").animate([{ transform: 'scale(0.8)' }, { transform: 'scale(1.5)' }], { duration: 2000, fill: "forwards" });
+            }
+            else if (BMI <= 18) {
+                document.getElementById("yellow_bar").animate([{ transform: 'translate(0,0)' }, { transform: 'translate(0px,0)' }], { duration: 2000, fill: "forwards" });
+                document.getElementById("mii").animate([{ transform: 'scale(1)' }, { transform: 'scale(0.5)' }], { duration: 2000, fill: "forwards" });
+                document.getElementById("BMI_result").textContent = "Your BMI is: " + BMI.toFixed(2);
+            }
+            else {
+                if (BMI < 23) {
+                    document.getElementById("mii").animate([{ transform: 'scale(1)' }, { transform: 'scale(0.5)' }], { duration: 2000, fill: "forwards" });
+                }
+                document.getElementById("yellow_bar").animate([{ transform: 'translate(0,0)' }, { transform: 'translate(' + moveAmount + 'px,0)' }], { duration: 2000, fill: "forwards" });
                 document.getElementById("BMI_result").textContent = "Your BMI is: " + BMI.toFixed(2);
             }
 
-        }
 
+
+
+        }
+        //Event listeners
         document.getElementById('weight').addEventListener('blur', validateInput, false);
         document.getElementById('height').addEventListener('blur', validateInput, false);
         document.getElementById('name').addEventListener('blur', validateInput, false);

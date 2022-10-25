@@ -6,19 +6,17 @@ div.mii{
 div.BMI_form {
     background-color: hsla(200, 100%, 80%, 0.9);
 }
-/*------ Font/text -----**/
+
 /* ------- Layout ------- */
 /* ------- Fixed ------- */
+
 /* --- Non-Fixed Postion --- */
 div.mii{
     position: relative;
     float: right;
 }
 
-div.BMI_form {
-    float: left;
-    /* width: 50%; */
-}
+
 
 /* ------- Absolute ------- */
 
