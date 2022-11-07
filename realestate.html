@@ -25,26 +25,37 @@
                 //not currently working, figure out WHY
                 
                 var x = 1;
-                var monthlyPayment = 1;
+                var monthlyPayment;
                 var IPPM = 1;
                 var principalPerMonth = 1;
                 var balance = $('#loanAmount').val;
+                var term = parseFloat($('#term').val());
+                monthlyPayment = balance*MIR/(1-Math.pow((1 - (1 + MIR)), (-term*12)));
+                console.log(monthlyPayment);
                 console.log("Loan Amount intiialized to: " + $('#loanAmount').val());
                 console.log("Interest intialized to: " + $('#interest').val());
-                for (i = 0; i < parseFloat($('#term').val()); i++) {
+                for (i = 0; i <term ; i++) {
                     //FIXED! ...I hope...?
+                    //change starting j value to current month
+                    var annualIn =0;
+                    var annualP =0;
                     for (j = 1; j <= 12; j++) {
-                        x += (MIR) / Math.pow((1 - (1 + MIR)), (0-j));
+                        balance = balance-monthlyPayment;
+                        IPPM = balance * MIR;
+                        principalPerMonth = monthlyPayment - IPPM;
+                        annualIn+=IPPM;
+                        annualP+=principalPerMonth;
+                        //x += (MIR) / Math.pow((1 - (1 + MIR)), (0-j));
                         //console.log("Math.pow calculation: "+ Math.pow((1 - (1 + MIR)), (0-j)) );
                         console.log("x#"+j+" (in loop) = " + x);
                     }
-                    monthlyPayment = ($('#interest').val() * MIR) / x
                     //(MIR)/Math.pow((1-(1+MIR),(-𝑛𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑚𝑜𝑛𝑡ℎ)));
-                    //Something goes wrong here!
-                    balance = balance-monthlyPayment;
-                    IPPM = balance * MIR;
-                    principalPerMonth = monthlyPayment - IPPM;
+                   // monthlyPayment = ($('#interest').val() * MIR) / x
+                    
 
+                    //Something goes wrong here!
+
+                    //!!
                     console.log("monthlyPayement: " + monthlyPayment);
                     console.log("x: " + x);
                     console.log("balance: " + balance);
