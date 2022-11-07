@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <title>Loan Calculator</title>
+    <link rel="stylesheet" href="css/loan.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#loantable').hide();
+            $('#loaninfo').hide();
+
+            $('#loan').click(function () {
+                $('#loaninfo').slideToggle();
+            });
+
+            $('#calculate').click(function () {
+                $('#loantable').show();
+
+                var MIR = parseFloat($('#interest').val()) / 12;
+                console.log("Monthly Interest Rate is: " + MIR)
+                //not currently working, figure out WHY
+                
+                var x = 1;
+                var monthlyPayment = 1;
+                var IPPM = 1;
+                var principalPerMonth = 1;
+                var balance = $('#loanAmount').val;
+                console.log("Loan Amount intiialized to: " + $('#loanAmount').val());
+                console.log("Interest intialized to: " + $('#interest').val());
+                for (i = 0; i < parseFloat($('#term').val()); i++) {
+                    //FIXED! ...I hope...?
+                    for (j = 1; j <= 12; j++) {
+                        x += (MIR) / Math.pow((1 - (1 + MIR)), (0-j));
+                        //console.log("Math.pow calculation: "+ Math.pow((1 - (1 + MIR)), (0-j)) );
+                        console.log("x#"+j+" (in loop) = " + x);
+                    }
+                    monthlyPayment = ($('#interest').val() * MIR) / x
+                    //(MIR)/Math.pow((1-(1+MIR),(-𝑛𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑚𝑜𝑛𝑡ℎ)));
+                    //Something goes wrong here!
+                    balance = balance-monthlyPayment;
+                    IPPM = balance * MIR;
+                    principalPerMonth = monthlyPayment - IPPM;
+
+                    console.log("monthlyPayement: " + monthlyPayment);
+                    console.log("x: " + x);
+                    console.log("balance: " + balance);
+                    console.log("IPPM: " + IPPM);
+                    console.log("principalPerMonth: " + principalPerMonth +"\n");
+                }
+            });
+
+
+        });
+    </script>
+
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <ul>
+            <button id="buy">Buy</button></a>
+            <button id="sale">Sale</button></a>
+            <button id="loan">Loan</button></a>
+            <button id="about">About</button></a>
+        </ul>
+    </div>
+
+    <div class="loaninfo" id="loaninfo">
+        <legend>
+            <h1>Loan Information</h1>
+        </legend>
+        <p>
+
+            Loan Amount
+            <input type="number" placeholder="Loan Amount" id="loanAmount" required>$ <br>
+
+            Interest Rate
+            <input type="number" placeholder="Interest Rate" id="interest" required>% <br>
+
+            Loan Term
+            <input type="text" placeholder="Loan Term" id="term" required>Years <br>
+
+            Start Date
+            <select>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+
+            </select>
+            <input type="number" min="1900" max="2022" step="1" value="2022" id="year"> <br>
+
+            Show results by <select name="age" id="age">
+                <option value="year">Year</option>
+            </select>
+
+
+        <p id="loanbutton">
+            <button id="calculate">Calculate</button>
+        </p>
+
+        </p>
+    </div>
+
+    <div class="tableDiv">
+        <table id="loantable">
+            <tr>
+                <td>Date</td>
+                <td>Interest</td>
+                <td>Principal</td>
+                <td>Balance</td>
+            </tr>
+
+            <tr id="year1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+
+        </table>
+    </div>
+
+</body>

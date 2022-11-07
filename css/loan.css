@@ -1,0 +1,18 @@
+div.loaninfo{ /* WHY DOESN'T THIS WORK???? */
+    background-color: lightcyan;
+    float: right;
+}
+
+div.loaninfo h1{ /* WHY DOESN'T THIS WORK???? */
+    background-color: lightblue;
+}
+
+#loanbutton{ /* WHY DOESN'T THIS WORK???? */
+    background-color:  lightblue;;
+}
+
+body{
+    background-image:url(../img/Estate.jpg);
+}
+
+
