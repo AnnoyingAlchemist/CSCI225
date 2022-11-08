@@ -22,46 +22,54 @@
 
                 var MIR = parseFloat($('#interest').val()) / 12;
                 console.log("Monthly Interest Rate is: " + MIR)
-                //not currently working, figure out WHY
-                
-                var x = 1;
-                var monthlyPayment;
-                var IPPM = 1;
-                var principalPerMonth = 1;
-                var balance = $('#loanAmount').val;
-                var term = parseFloat($('#term').val());
-                monthlyPayment = balance*MIR/(1-Math.pow((1 - (1 + MIR)), (-term*12)));
-                console.log(monthlyPayment);
-                console.log("Loan Amount intiialized to: " + $('#loanAmount').val());
                 console.log("Interest intialized to: " + $('#interest').val());
-                for (i = 0; i <term ; i++) {
-                    //FIXED! ...I hope...?
+
+                var monthlyPayment;
+                var IPPM;
+                var principalPerMonth;
+
+                var startYear = $('#year').val();
+                console.log("Starting Year: " + startYear);
+                var balance = $('#loanAmount').val();
+                console.log("Loan Amount/Balance intiialized to: " + balance);
+                var term = parseFloat($('#term').val());
+                console.log("Term is: " + term + " years")
+                var annualIn;
+                var annualP;
+                var tempBal;
+                monthlyPayment = balance * MIR / (1 - (Math.pow(((1 + MIR)), (((0-term) * 12))))); //something is wrong with this formula and I can't figure out what, even with my calculator
+                console.log("monthly payment is: " + monthlyPayment);
+
+                $("#loantable").append('<p>Monthly Payment: '+monthlyPayment+'</p>');
+                for (i = 0; i < term; i++) {
                     //change starting j value to current month
-                    var annualIn =0;
-                    var annualP =0;
+                    annualIn = 0;
+                    annualP = 0;
                     for (j = 1; j <= 12; j++) {
-                        balance = balance-monthlyPayment;
+                        console.log("monthlyPayement in loop: " + monthlyPayment);
+                        console.log("Balance in start of loop #"+j+": " + balance)
+                        tempBal = balance - monthlyPayment;
+                        balance = tempBal; //?????
+                        console.log("Balance in loop after monthly payment subtraction: " + balance + '\n')
                         IPPM = balance * MIR;
                         principalPerMonth = monthlyPayment - IPPM;
-                        annualIn+=IPPM;
-                        annualP+=principalPerMonth;
+                        annualIn += IPPM;
+                        annualP += principalPerMonth;
                         //x += (MIR) / Math.pow((1 - (1 + MIR)), (0-j));
                         //console.log("Math.pow calculation: "+ Math.pow((1 - (1 + MIR)), (0-j)) );
-                        console.log("x#"+j+" (in loop) = " + x);
+                        //console.log("x#"+j+" (in loop) = " + x);
                     }
                     //(MIR)/Math.pow((1-(1+MIR),(-𝑛𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑚𝑜𝑛𝑡ℎ)));
-                   // monthlyPayment = ($('#interest').val() * MIR) / x
-                    
+                    // monthlyPayment = ($('#interest').val() * MIR) / x
 
-                    //Something goes wrong here!
 
-                    //!!
-                    console.log("monthlyPayement: " + monthlyPayment);
-                    console.log("x: " + x);
                     console.log("balance: " + balance);
                     console.log("IPPM: " + IPPM);
-                    console.log("principalPerMonth: " + principalPerMonth +"\n");
+                    console.log("principalPerMonth: " + principalPerMonth + "\n");
+
+                    $("#loantable").append('<tr><td>' + (parseInt(startYear) + parseInt(i)) + '</td> <td>$"' + annualIn + '"</td> <td>$"' + annualP + '"</td> <td>$"' + balance + '"</td></tr>');
                 }
+                $('#loaninfo').hide();
             });
 
 
@@ -135,15 +143,6 @@
                 <td>Principal</td>
                 <td>Balance</td>
             </tr>
-
-            <tr id="year1">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-
-
         </table>
     </div>
 

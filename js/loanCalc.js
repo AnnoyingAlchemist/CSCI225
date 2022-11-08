@@ -24,7 +24,6 @@ for (i = 0; i < $('#term').val(); i++) {
     console.log("IPPM: " +IPPM);
     console.log("principalPerMonth: " +principalPerMonth);
 }
-*/
 
 var x = 0;
                 var monthlyPayment = 0;
@@ -50,3 +49,5 @@ var x = 0;
                     console.log("IPPM: " + IPPM);
                     console.log("principalPerMonth: " + principalPerMonth);
                 }
+                
+*/
